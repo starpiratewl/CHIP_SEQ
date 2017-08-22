@@ -1,6 +1,8 @@
 ## pre-step: download sratoolkit /fastx_toolkit_0.0.13/fastqc/bowtie2/bwa/MACS2/HOMER/QuEST/mm9/hg19/bedtools
 ## http://www.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software
 ## http://www.ncbi.nlm.nih.gov/books/NBK158900/
+
+
 ## Download and install sratoolkit
 cd ~/biosoft
 mkdir sratoolkit && cd sratoolkit
@@ -9,6 +11,8 @@ wget http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.6.3/sratoolkit.2.6.3-centos_lin
 ## Length: 63453761 (61M) [application/x-gzip]
 ## Saving to: "sratoolkit.2.6.3-centos_linux64.tar.gz"
 tar zxvf sratoolkit.2.6.3-centos_linux64.tar.gz
+
+
 ## Download and install bedtools
 cd ~/biosoft
 mkdir bedtools && cd bedtools
@@ -17,6 +21,8 @@ wget https://github.com/arq5x/bedtools2/releases/download/v2.25.0/bedtools-2.25.
 tar -zxvf bedtools-2.25.0.tar.gz
 cd bedtools2
 make
+
+
 ## Download and install PeakRanger
 cd ~/biosoft
 mkdir PeakRanger && cd PeakRanger
@@ -24,6 +30,8 @@ wget https://sourceforge.net/projects/ranger/files/PeakRanger-1.18-Linux-x86_64.
 ## Length: 1517587 (1.4M) [application/octet-stream]
 unzip PeakRanger-1.18-Linux-x86_64.zip
 ~/biosoft/PeakRanger/bin/peakranger -h
+
+
 ## Download and install bowtie
 cd ~/biosoft
 mkdir bowtie && cd bowtie
@@ -34,6 +42,8 @@ mv download bowtie2-2.2.9-linux-x86_64.zip
 unzip bowtie2-2.2.9-linux-x86_64.zip
 mkdir -p ~/biosoft/bowtie/hg19_index
 cd ~/biosoft/bowtie/hg19_index
+
+
 # download hg19 chromosome fasta files
 wget http://hgdownload.cse.ucsc.edu/goldenPath/hg19/bigZips/chromFa.tar.gz
 # unzip and concatenate chromosome and contig fasta files
@@ -55,6 +65,8 @@ source ~/.bashrc
 bwa index -p hg19bwaidx -a bwtsw ~/biosoft/bowtie/hg19_index/hg19.fa
 # -p index name (change this to whatever you want)
 # -a index algorithm (bwtsw for long genomes and is for short genomes)
+
+
 ## Download and install macs2
 ## // https://pypi.python.org/pypi/MACS2/
 cd ~/biosoft
@@ -76,6 +88,8 @@ Example for regular peak calling:
 macs2 callpeak -t ChIP.bam -c Control.bam -f BAM -g hs -n test -B -q 0.01
 Example for broad peak calling:
 macs2 callpeak -t ChIP.bam -c Control.bam --broad -g hs --broad-cutoff 0.1
+
+
 ## Download and install homer (Hypergeometric Optimization of Motif EnRichment)
 ## // http://homer.salk.edu/homer/
 ## // http://blog.qiubio.com:8080/archives/3024
