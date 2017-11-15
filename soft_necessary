@@ -75,6 +75,34 @@ wget ~~~~~~~~~~~~~~~~~~~~~~MACS2-2.1.1.20160309.tar.gz
 tar zxvf MACS2-2.1.1.20160309.tar.gz
 cd MACS2-2.1.1.20160309
 python setup.py install --user
+
+## here pop out reminder that 
+##CRITICAL:Numpy must be installed!
+## installation of numpy
+## download numpy from https://sourceforge.net/projects/numpy/?source=directory
+cd /home/liang/Downloads
+tar zxvf numpy-1.11.2.tar.gz
+cd numpy-1.11.2/
+## need root
+python setup.py install
+## here pop out error SystemError: Cannot compile 'Python.h'. Perhaps you need to install python-dev|python-devel.
+yum install gcc
+yum install python-devel
+## good we have installed the numpy
+## let's test the numpy installation
+python
+##Python 2.7.5 (default, Aug  4 2017, 00:39:18) 
+##[GCC 4.8.5 20150623 (Red Hat 4.8.5-16)] on linux2
+##Type "help", "copyright", "credits" or "license" for more information.
+>>> from numpy import *
+>>> eye(4)
+##array([[ 1.,  0.,  0.,  0.],
+##       [ 0.,  1.,  0.,  0.],
+##       [ 0.,  0.,  1.,  0.],
+##       [ 0.,  0.,  0.,  1.]])
+
+
+
 #################### The log for installing MACS2:
 Creating ~/.local/lib/python2.7/site-packages/site.py
 Processing MACS2-2.1.1.20160309-py2.7-linux-x86_64.egg
