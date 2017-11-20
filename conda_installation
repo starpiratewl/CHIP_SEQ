@@ -7,7 +7,20 @@ sh Miniconda2-latest-Linux-x86_64.sh
 source ~/.bashrc
 ## then the conda command can be used
 
+## add some channel
+
+conda config --add channels defaults
+conda config --add channels conda-forge
+conda config --add channels bioconda
+conda config --add channels r
+
+
 ## use conda to install some software
+conda install fastqc
+## insure your internet connection   :)
+
+
+
 
 
 
