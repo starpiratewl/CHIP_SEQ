@@ -51,6 +51,21 @@ tar zvfx chromFa.tar.gz
 cat *.fa > hg19.fa
 rm chr*.fa
 ## ~/biosoft/bowtie/bowtie2-2.2.9/bowtie2-build ~/biosoft/bowtie/hg19_index/hg19.fa ~/biosoft/bowtie/hg19_index/hg19
+
+## here pop out the error:
+## libtbb.so.2: cannot open shared object file: No such file
+yum search tbb 
+##------------
+##tbb.i686 : The Threading Building Blocks library abstracts low-level threading
+##         : details
+##tbb-devel.i686 : The Threading Building Blocks C++ headers and shared
+##               : development libraries
+##tbb-doc.i686 : The Threading Building Blocks documentation
+##---- then run ----
+yum install tbb tbb-devel
+## probelm solved
+
+
 ## Download and install BWA
 cd ~/biosoft
 mkdir bwa && cd bwa
