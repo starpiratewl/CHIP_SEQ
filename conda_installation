@@ -7,6 +7,7 @@ sh Miniconda2-latest-Linux-x86_64.sh
 source ~/.bashrc
 ## then the conda command can be used
 
+## use conda to install some software
 
 
 
