@@ -8,6 +8,11 @@ cd chip_seq_test
 
 ## doanload the sra file from ftp://ftp-trace.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByStudy/sra/SRP/SRP033/SRP033492/
 ## each director contain a sra file, so we batchly download the sra file
+## the sra files comes from the GEO website, we find it as follows:
+## 1. get the GEO id (for example, here is GSE52964)
+## 2. find GSE52964 in GEO
+## 3. on the bottom of the page of GSE52964, find the supplymentary file "SRP/SRP033/SRP033492"
+## 4. click the ftp links on the "Download" column
 for ((i=593;i<601;i++)); do wget [ftp://ftp-trace.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByStudy/sra/SRP/SRP033/SRP033492/SRR1042](ftp://ftp-trace.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByStudy/sra/SRP/SRP033/SRP033492/SRR1042)$i /SRR1042$i.sra; done
 
 ## step2 change the sra file to fastq files
@@ -29,6 +34,17 @@ mkdir QC_results
 mv *zip *html QC_results
 
 
-## step5 
-
+## step5 : alignment to hg19/ using bowtie2 to do alignment
+## ~/biosoft/bowtie/bowtie2-2.2.9/bowtie2-build ~/biosoft/bowtie/hg19_index /hg19.fa ~/biosoft/bowtie/hg19_index/hg19
+## cat >run_bowtie2.sh
+ls *.fastq | while read id ;
+do
+echo $id
+#~/biosoft/bowtie/bowtie2-2.2.9/bowtie2 -p 8 -x ~/biosoft/bowtie/hg19_index/hg19 -U $id -S ${id%%.*}.sam 2>${id%%.*}.align.log;
+#samtools view -bhS -q 30 ${id%%.*}.sam > ${id%%.*}.bam ## -F 1548 https://broadinstitute.github.io/picard/explain-flags.html
+# -F 0x4 remove the reads that didn't match
+samtools sort ${id%%.*}.bam ${id%%.*}.sort ## prefix for the output
+# samtools view -bhS a.sam | samtools sort -o - ./ > a.bam
+samtools index ${id%%.*}.sorted.bam
+done
 
