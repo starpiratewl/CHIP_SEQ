@@ -40,8 +40,9 @@ mv *zip *html QC_results
 ls *.fastq | while read id ;
 do
 echo $id
-#~/biosoft/bowtie/bowtie2-2.2.9/bowtie2 -p 8 -x ~/biosoft/bowtie/hg19_index/hg19 -U $id -S ${id%%.*}.sam 2>${id%%.*}.align.log;
-#samtools view -bhS -q 30 ${id%%.*}.sam > ${id%%.*}.bam ## -F 1548 https://broadinstitute.github.io/picard/explain-flags.html
+/home/liang/biosoft/bowtie/bowtie2-2.2.9/bowtie2 -p 8 -x /home/liang/biosoft/bowtie/hg19_index/hg19 -U $id -S ${id%%.*}.sam > ${id%%.*}.align.log;
+#samtools view -bhS -q 30 ${id%%.*}.sam > ${id%%.*}.bam 
+## -F 1548 https://broadinstitute.github.io/picard/explain-flags.html
 # -F 0x4 remove the reads that didn't match
 samtools sort ${id%%.*}.bam ${id%%.*}.sort ## prefix for the output
 # samtools view -bhS a.sam | samtools sort -o - ./ > a.bam
