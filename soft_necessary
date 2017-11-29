@@ -142,3 +142,36 @@ mkdir homer && cd homer
 wget http://homer.salk.edu/homer/configureHomer.pl
 perl configureHomer.pl -install
 perl configureHomer.pl -install hg19
+
+
+## download samtools from http://www.htslib.org/
+## there are three software included: samtools-1.6； htslib-1.6； bcftools-1.6 
+
+
+## install the relation libs
+yum install gcc gcc-c++
+yum install gcc-gfortran
+yum install zlib-devel.i686
+yum install ncurses-devel ncurses
+yum install bzip2-devel.x86_64
+yum install -y xz-devel
+yum install python-devel
+
+## install the htslib
+tar -jxvf htslib-1.6.tar.bz2
+cd htslib-1.6
+make
+make install
+
+## install the samtools
+tar -jxvf samtools-1.6.tar.bz2
+cd samtools-1.6
+make
+make install
+
+## install the bcftools
+tar -jxvf bcftools-1.6.tar.bz2
+cd bcftools-1.6
+make
+make install
+
