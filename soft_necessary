@@ -7,7 +7,7 @@
 ## yum install gcc-c++
 ## yum install zlib
 ## yum install zlib-devel
-
+## yum install python-devel
 
 
 
