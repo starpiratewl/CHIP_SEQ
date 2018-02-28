@@ -17,7 +17,7 @@ yum install gcc-c++
 yum install zlib
 yum install zlib-devel
 yum install tbb
-
+## without the tbb library, we will encounter a libtbb.so.2 missing error when we run bowtie2
 
 
 
