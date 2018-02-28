@@ -3,11 +3,20 @@
 ## http://www.ncbi.nlm.nih.gov/books/NBK158900/
 
 
-## yum install gcc
-## yum install gcc-c++
-## yum install zlib
-## yum install zlib-devel
-## yum install python-devel
+
+## install the relation libs
+
+yum install gcc-gfortran
+yum install zlib-devel.i686
+yum install ncurses-devel ncurses
+yum install bzip2-devel.x86_64
+yum install -y xz-devel
+yum install python-devel
+yum install gcc
+yum install gcc-c++
+yum install zlib
+yum install zlib-devel
+yum install tbb
 
 
 
@@ -251,15 +260,6 @@ perl configureHomer.pl -install hg19
 ## download samtools from http://www.htslib.org/
 ## there are three software included: samtools-1.6； htslib-1.6； bcftools-1.6 
 
-
-## install the relation libs
-yum install gcc gcc-c++
-yum install gcc-gfortran
-yum install zlib-devel.i686
-yum install ncurses-devel ncurses
-yum install bzip2-devel.x86_64
-yum install -y xz-devel
-yum install python-devel
 
 ## install the htslib
 tar -jxvf htslib-1.6.tar.bz2
