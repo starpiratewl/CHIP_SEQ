@@ -32,7 +32,8 @@ ls *.fastq | while read id; do /home/liang/biosoft/fastqc/FastQC/fastqc $id; don
 
 mkdir QC_results
 mv *zip *html QC_results
-s
+
+
 
 ## step5 : alignment to hg19/ using bowtie2 to do alignment
 ## ~/biosoft/bowtie/bowtie2-2.2.9/bowtie2-build ~/biosoft/bowtie/hg19_index /hg19.fa ~/biosoft/bowtie/hg19_index/hg19
@@ -44,8 +45,21 @@ echo $id
 samtools view -bhS -q 30 ${id%%.*}.sam > ${id%%.*}.bam 
 ## -F 1548 https://broadinstitute.github.io/picard/explain-flags.html
 # -F 0x4 remove the reads that didn't match
-samtools sort ${id%%.*}.bam ${id%%.*}.sort ## prefix for the output
+samtools sort ${id%%.*}.bam ${id%%.*}.sort 
+## prefix for the output
 # samtools view -bhS a.sam | samtools sort -o - ./ > a.bam
 samtools index ${id%%.*}.sorted.bam
 done
+
+#############################################
+## samtools test, parameter test
+#############################################
+/home/wangliang/biosoft/bowtie/bowtie2-2.3.2/bowtie2 -p 8 -x /home/wangliang/biosoft/bowtie/hg19_idnex/hg19 -U SRR1042593.fastq -S SRR1042593.sam
+samtools view -bhs -q SRR1042593sam > SRR1042593.bam
+samtools sort SRR1042593.bam SRR1042593.sort
+samtools index SRR1042593.sorted.bam
+
+
+
+
 
